@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name="LOAN_APPLICATION")
 public class LoanApplicationEntity {
+	
 	public LoanApplicationEntity() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -20,8 +21,8 @@ public class LoanApplicationEntity {
 	
     @Id
     @Column(name="chassis_no",length=20)
-    @NotNull(message="chassis number cannot be null")
-    @NotEmpty(message="chassis number cannot be empty")
+//    @NotNull(message="chassis number cannot be null")
+    @NotBlank(message="chassis number cannot be empty")
 	private String chassisNo="default";
     
     @Column(name="existing_emi")
@@ -44,22 +45,22 @@ public class LoanApplicationEntity {
 	private double amount;
     
     @Column(name="loan_application_date")
-    @NotNull(message="loan application date cannot be null")
+//    @NotNull(message="loan application date cannot be null")
 	private LocalDate appdate;
     
     @Column(name="loan_application_status", length=20)
-    @NotNull(message="loan application status cannot be null")
+    @NotBlank(message="loan application status cannot be null")
 	private String status="Pending";
     
     @Column(name="vehicle_brand", length=20)
-    @NotNull(message="vehicle brand cannot be null")
+    @NotBlank(message="vehicle brand cannot be null")
 	private String brand;
     
-    @NotNull(message="vehicle colour cannot be null")
+    @NotBlank(message="vehicle colour cannot be null")
     @Column(name="vehicle_colour", length=20)
 	private String colour;
     
-    @NotNull(message="vehicle model cannot be null")
+    @NotBlank(message="vehicle model cannot be null")
     @Column(name="vehicle_model", length=20)
 	private String model;
     

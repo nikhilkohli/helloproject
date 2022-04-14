@@ -41,10 +41,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		log.info("Service Layer - Exit - addUserDetails");
 		
 		Optional<UserRegistrationEntity> userRegister =userRegisterRepo.findById(email);
+		
 	    UserRegistrationEntity userReg=userRegister.get();
 		
 		if(userReg!=null && userReg.getUserdetails()==null ) {
 		user = userDetailsRepo.saveAndFlush(useradvanced); 
+		
 		userReg.setUserdetails(useradvanced);
 		userRegisterRepo.saveAndFlush(userReg);
 		}

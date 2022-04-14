@@ -52,7 +52,7 @@ public class LoginController {
 			String adminEmail,String password) throws RegistrationException, RecordNotFoundException, DuplicateRecordException, InvalidDetailsException, LoanApplicationException{
 			AdminEntity admin= loginService.authenticateAdmin(adminEmail, password);//Log.info("admin sign in");
 			EntityModel<AdminEntity> resource=EntityModel.of(admin);
-//			 resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(LoanApplicationController.class).updateLoanApplication(new LoanApplicationEntity())).withRel("update the loan application"));
+//			  resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(LoanApplicationController.class).updateLoanApplication(new LoanApplicationEntity())).withRel("update the loan application"));
 //			  resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(LoanApplicationController.class).getAllPendingLoans()).withRel("view all pending loans"));
 //			  resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ApprovedLoanController.class).addApprovedLoan(new ApprovedLoansEntity())).withRel("approve an account"));
 //			  resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(LoanApplicationController.class).getAllApprovedLoans()).withRel("view all accepted loans"));

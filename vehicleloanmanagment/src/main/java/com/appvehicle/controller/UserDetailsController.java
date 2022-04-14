@@ -49,10 +49,10 @@ public class UserDetailsController {
 //        return new ResponseEntity<List<UserDetailsEntity>>(users, HttpStatus.OK);
 //	}
 	@PostMapping("/userdetails/{email}")
-    public String addUserDetails( String email, @Valid  UserDetailsEntity user) throws RecordNotFoundException{
+    public ResponseEntity<List<UserDetailsEntity>> addUserDetails(@PathVariable String email, @Valid  UserDetailsEntity user) throws RecordNotFoundException{
        List<UserDetailsEntity> users=Service.addUserDetails(user, email);
-//        return new ResponseEntity<List<UserDetailsEntity>>(users, HttpStatus.OK);
-       return "userdetails";
+        return new ResponseEntity<List<UserDetailsEntity>>(users, HttpStatus.OK);
+//       return "userdetails";
 	}
 	
 	}

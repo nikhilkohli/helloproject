@@ -12,14 +12,13 @@ public class AdminEntity
 {
     public AdminEntity()
     {
-        super();
+        //super();
         // TODO Auto-generated constructor stub
     }
  
     public AdminEntity(String email, String name, String password) 
     {
         super();
- 
         this.email = email;
         this.name = name;
         this.password = password;
@@ -43,6 +42,7 @@ public class AdminEntity
     @NotBlank(message = "Password should not be Blank")
     @Size(min = 1, max = 20)
     private String password;
+    
     public String getEmail() 
     {
         return email;

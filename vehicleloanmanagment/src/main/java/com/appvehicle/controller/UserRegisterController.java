@@ -37,7 +37,7 @@ public class UserRegisterController
     
  // ADDING THE USER DETAILS
     @PostMapping("/userregister")
-    public ResponseEntity<UserRegistrationEntity> userRegister(@Valid @RequestBody UserRegistrationEntity userbasic) throws DuplicateRecordException 
+    public ResponseEntity<UserRegistrationEntity> userRegister(@Valid @RequestBody  UserRegistrationEntity userbasic) throws DuplicateRecordException 
     {
         UserRegistrationEntity userRegister = userRegis.userRegister(userbasic);
         return new ResponseEntity<UserRegistrationEntity>(userRegister, HttpStatus.OK);
@@ -49,6 +49,8 @@ public class UserRegisterController
 ////        return new ResponseEntity<UserRegistrationEntity>(userRegister, HttpStatus.OK);
 //        return "userdetails";
 //    }
+    
+
  
     // GET USER DETAILS BY EMAIL
     @GetMapping("/userregister/{email}")

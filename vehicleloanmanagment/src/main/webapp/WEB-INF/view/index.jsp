@@ -3,17 +3,27 @@ pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
-        <title>Vehicle Loan Management System</title>
-
+   <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet">
+        
+<title>Vehicle Loan Management</title>
     </head>
     <body>
+    
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd">
+    <a class="navbar-brand">Vehicle Loan Management System</a>
+    </nav>
 
-        <h1>Vehicle Loan Management System</h1>
+        
         <p>
-         This is a web application for managing vehicle loan.
+        Welcome to loan management system.
         </p>
-        <hr>
+        <br>
+        <br>
+        
        
         <div class="mainsection">
         <a href='/user'>

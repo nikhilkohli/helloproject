@@ -2,6 +2,7 @@ package com.appvehicle.model;
 
 import java.time.LocalDate;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -15,33 +16,35 @@ public class ApprovedLoansEntity
     }
     @Id @GeneratedValue
     @Column(name="approvedloanid")
-    @NotNull(message = "LoanId should not be Null")
-    @NotBlank(message = "LoanId should not be Blank")
+//    @NotNull(message = "LoanId should not be Null")
+//    @NotBlank(message = "LoanId should not be Blank")
+    @NotNull
     private int loanId;
     
     @Column(name="emi_amount")
     @NotNull(message = "EMI should not be Null")
-    @NotBlank(message = "EMI should not be Blank")
+//    @NotBlank(message = "EMI should not be Blank")
     private double emi;
     
     @Column(name="emi_starting_date")
-    @NotNull(message = "EMIDate should not be Null")
-    @NotBlank(message = "EMIDate should not be Blank")
+//    @NotNull(message = "EMIDate should not be Null")
+//    @NotBlank(message = "EMIDate should not be Blank")
+    @NotNull
     private LocalDate emidate;
     
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @ManyToOne(cascade= {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+   // @ManyToOne(cascade= {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @ManyToOne(cascade={CascadeType.REFRESH,CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="account_no")
-    @NotNull(message = "Account should not be Null")
-    @NotBlank(message = "Account should not be Blank")
+//    @NotNull(message = "Account should not be Null")
+//    @NotBlank(message = "Account should not be Blank")
     private AccountEntity account;
     
     
     @OneToOne(cascade= {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST},fetch = FetchType.LAZY)
-   
     @JoinColumn(name="chassis_no")
-    
     private LoanApplicationEntity loanapp;
+    
     public ApprovedLoansEntity(int loanId, double emi, LocalDate emidate, AccountEntity account, LoanApplicationEntity loanapp)
     {
         super();

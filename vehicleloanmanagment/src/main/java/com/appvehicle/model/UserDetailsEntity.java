@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name="USER_DETAILS")
 public class UserDetailsEntity  {
+	
 	public UserDetailsEntity() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -24,14 +25,14 @@ public class UserDetailsEntity  {
     private int userId;
     
     //Validation of Address
-    @NotNull(message="Address is mandatory")
+//    @NotNull(message="Address is mandatory")
     @Size(min=5,max=50)
 	@Column(name="user_address")
 	private String address;
     
     //Validation of State
-    @NotBlank(message="State must contain atleat one non-white space character")
-  
+//    @NotBlank(message="State must contain atleat one non-white space character")
+    @NotBlank
 	@Column(name="user_state")
 	private String state;
 	public UserDetailsEntity( String address, String state, String city, String pin, String emptype,
@@ -62,7 +63,8 @@ public class UserDetailsEntity  {
 	private String pin;
      
     //Validation of Emptype
-    @NotBlank(message="emptype must be entered")
+//    @NotBlank(message="emptype must be entered")
+	 @NotBlank
 	@Column(name="user_emptype", length=20)
 	private String emptype;
 	
@@ -74,25 +76,25 @@ public class UserDetailsEntity  {
     
     //Validation of Aadhar
     
-    @NotNull(message="Aadhar must be entered")
+    @NotBlank(message="Aadhar must be entered")
 	@Column(name="user_aadhar_url", length=20)
 	private String aadhar;
     
     //Validation of PanUrl
     
-    @NotNull(message="Pan must be entered")
+    @NotBlank(message="Pan must be entered")
 	@Column(name="user_pan_url", length=20)
 	private String pan;
 	
     //Validation of salary slip
     //www.salaryslip.com
     //@Pattern(regexp="\\bwww\\.[a-zA-Z0-9]{2,256}\\.com\\b")
-    @NotNull(message="Userslip must be entered")
+    @NotBlank(message="Userslip must be entered")
 	@Column(name="user_salary_slip", length=20)
 	private String salarySlip;
 	
     //Validation of AddressProof
-    @NotNull(message="Addressproof must be entered")
+    @NotBlank(message="Addressproof must be entered")
 	@Column(name="user_address_proof", length=20)
 	private String addressProof;
 	

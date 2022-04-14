@@ -14,7 +14,13 @@
      
     
      
-    <form action="/api/vehicleloans/userdetails/{email}" method="post">
+   <form action="/api/vehicleloans/userdetails/{email}" method="post">  
+   
+   
+    
+    <!-- <label for="email">Email</label><br>
+    <input type="email" id="email" name="email"><br> -->
+    
     
     <label for="userId">User Id:</label><br>
     <input type="number" id="userId" name="userId"><br>
@@ -55,4 +61,4 @@
 </form>
 
 </body>
-</html>
+</html> 

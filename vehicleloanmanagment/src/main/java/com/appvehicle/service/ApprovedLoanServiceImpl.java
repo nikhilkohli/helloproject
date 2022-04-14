@@ -13,6 +13,8 @@ import com.appvehicle.exceptions.InvalidDetailsException;
 import com.appvehicle.exceptions.LoanApplicationException;
 import com.appvehicle.exceptions.RecordNotFoundException;
 import com.appvehicle.model.ApprovedLoansEntity;
+import com.appvehicle.service.EmiService;
+import com.appvehicle.service.EmiServiceImpl;
 
 @Service
 public class ApprovedLoanServiceImpl implements ApprovedLoanService 
@@ -20,7 +22,11 @@ public class ApprovedLoanServiceImpl implements ApprovedLoanService
     
     static Logger log = Logger.getLogger(ApprovedLoanServiceImpl.class.getClass());
     
-    EmiServiceImpl emiService;
+    EmiServiceImpl emiService = new EmiServiceImpl();
+    
+    
+ 	
+
     
     @Autowired
     private ApprovedLoansJPARepository approvedRepo;
@@ -62,22 +68,32 @@ public class ApprovedLoanServiceImpl implements ApprovedLoanService
     }
  
     @Override
-    public List<ApprovedLoansEntity> addApprovedLoan(ApprovedLoansEntity approved) throws DuplicateRecordException, InvalidDetailsException, LoanApplicationException {
+    public List<ApprovedLoansEntity> addApprovedLoan(ApprovedLoansEntity approved) throws DuplicateRecordException, InvalidDetailsException {
+    	
+    	
     	if(approved==null)
     		throw new InvalidDetailsException("Invalid Object Found!");
     	if(!(approved.getLoanapp().getStatus().equalsIgnoreCase("Accepted")))
-    		throw new LoanApplicationException("Loan is still not approved!");                          
+ 
+    	{	
     	double loanAmount=approved.getLoanapp().getAmount();   
     	int tenure=approved.getLoanapp().getTenure();
     	double interestRate=approved.getLoanapp().getInterest();
-    	double emi=emiService.EMICalculate(loanAmount, 12, interestRate);
+    	
+    	System.out.println("function is called");
+ 
+    	double emi=emiService.EMICalculate(loanAmount, tenure, interestRate);
+    	
+    	
     	approved.setEmi(emi);   
+    	}
     	
     	  Optional<ApprovedLoansEntity> retApproved=approvedRepo.findById(approved.getLoanId());     
     	if(retApproved.isPresent())
     		throw new DuplicateRecordException("The Loan is already added");
     	approvedRepo.saveAndFlush(approved);
     	return approvedRepo.findAll();
+    	
     	                                                                                                      
     }
     

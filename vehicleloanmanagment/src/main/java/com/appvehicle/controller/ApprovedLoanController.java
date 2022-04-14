@@ -2,6 +2,8 @@ package com.appvehicle.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,7 +56,7 @@ public class ApprovedLoanController
 	
 		@PostMapping("/approvedloans")
 		public ResponseEntity<List<ApprovedLoansEntity>> addApprovedLoan(
-				@RequestBody ApprovedLoansEntity approved) throws DuplicateRecordException, InvalidDetailsException, LoanApplicationException{
+				@RequestBody @Valid ApprovedLoansEntity approved) throws DuplicateRecordException, InvalidDetailsException, LoanApplicationException{
 			List<ApprovedLoansEntity> approvedLoans= approvedLoanService.addApprovedLoan(approved);
 			//log.info("Adding Approved Loans");
 			return new ResponseEntity<List<ApprovedLoansEntity>>(approvedLoans, HttpStatus.OK);
